@@ -8,12 +8,14 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    ProductsComponent
+    ProductsComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

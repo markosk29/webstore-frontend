@@ -1,0 +1,20 @@
+<div class="menu" 
+    (click)="switchMenuStatus()">{{arrows}}</div>
+    
+<div class="home" 
+    *ngIf="isOpen" (click)="navigate('')">HOME</div>
+
+<div class="products"
+    *ngIf="isOpen" (click)="navigate('products/all')">PRODUCTS</div>
+
+<div class="categories"
+    *ngIf="isOpen" (click)="navigate('categories')">CATEGORIES</div>
+
+<div class="wishlist" 
+    *ngIf="isOpen" (click)="navigate('wishlist')">WISHLIST</div>
+
+<div class="auth" 
+    *ngIf="isOpen" (click)="navigate('login')">LOGIN</div>
+
+<div class="profile" 
+    *ngIf="isOpen" (click)="navigate('profile')">PROFILE</div>

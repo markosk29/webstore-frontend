@@ -10,8 +10,8 @@ import { Product } from '../model/Product';
 })
 export class HttpRequestsService {
 
-  registerUrl: string = "http://localhost:8080/api/auth/register";
-  loginUrl: string = "http://localhost:8080/api/auth/login";
+  registerUrl: string = "http://localhost:8080/auth/register";
+  loginUrl: string = "http://localhost:8080/auth/login";
   productsUrl: string = "http://localhost:8080/products/all";
 
   constructor(private http: HttpClient) { }
