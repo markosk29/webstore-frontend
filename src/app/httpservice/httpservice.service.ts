@@ -12,7 +12,7 @@ export class HttpRequestsService {
 
   registerUrl: string = "http://localhost:8080/auth/register";
   loginUrl: string = "http://localhost:8080/auth/login";
-  productsUrl: string = "http://localhost:8080/products/all";
+  productUrl: string = "http//localhost:8080/products/"
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +25,10 @@ export class HttpRequestsService {
   }
 
   getAllProducts(): Observable<Product> {
-    return this.http.get<Product>(this.productsUrl);
+    return this.http.get<Product>(this.productUrl + "all");
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.http.get<Product>(this.productUrl + id);
   }
 }

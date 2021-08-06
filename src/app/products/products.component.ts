@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpRequestsService } from '../httpservice/httpservice.service';
+import { Product } from '../model/Product';
 
 @Component({
   selector: 'app-products',
@@ -17,4 +18,12 @@ export class ProductsComponent implements OnInit {
       .subscribe((resp: any) => this.products = resp);
   }
 
+  findProductById(id: string): Product {
+    let product: any;
+    
+    this.http.getProductById(id)
+      .subscribe(resp => product = resp);
+
+    return product;
+  }
 }
