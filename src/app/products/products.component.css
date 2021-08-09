@@ -1,0 +1,24 @@
+.productGroup {
+    margin: 100px;
+}
+
+.product {
+    display: inline-block;
+    width: 149px;
+    height: 300px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    padding: 3px;
+}
+
+.productImg1 {
+   width:150px;
+   height:150px;
+   object-fit:cover;
+   object-position:50% 50%;
+}
+
+.product:hover {
+    border-color: lightgray;
+}

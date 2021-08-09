@@ -1,1 +1,6 @@
-<div *ngFor="let product of products">{{product.name}}</div>
+<div class="productGroup">
+    <div class="product" *ngFor="let product of products" (click)="navigateToProduct(product.product_id)">
+        <img class="productImg1" [src]="product.imagepath1">
+        <p>{{product.name}}</p>
+    </div>  
+</div>

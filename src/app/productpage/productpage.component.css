@@ -1,0 +1,8 @@
+.productImg1 {
+   margin-top: 150px;
+   margin-left: 150px;
+   width:512px;
+   height:512px;
+   object-fit:cover;
+   object-position:50% 50%;
+}

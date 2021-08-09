@@ -10,25 +10,23 @@ import { Product } from '../model/Product';
 })
 export class HttpRequestsService {
 
-  registerUrl: string = "http://localhost:8080/auth/register";
-  loginUrl: string = "http://localhost:8080/auth/login";
-  productUrl: string = "http//localhost:8080/products/"
+  url: String = "http://localhost:8080";
 
   constructor(private http: HttpClient) { }
 
   registerAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.registerUrl, account);
+    return this.http.post<Account>(this.url + "/auth/register", account);
   }
 
   loginAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.loginUrl, account);
+    return this.http.post<Account>(this.url + "/auth/login" , account);
   }
 
   getAllProducts(): Observable<Product> {
-    return this.http.get<Product>(this.productUrl + "all");
+    return this.http.get<Product>(this.url + "/products/all");
   }
 
-  getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(this.productUrl + id);
+  getProductById(route: string): Observable<Product> {
+    return this.http.get<Product>(this.url + route);
   }
 }

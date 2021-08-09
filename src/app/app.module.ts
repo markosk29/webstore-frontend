@@ -9,13 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { ProductpageComponent } from './productpage/productpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
     ProductsComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent,
+    ProductpageComponent
   ],
   imports: [
     BrowserModule,
