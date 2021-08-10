@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsComponent } from './products/products.component';
-import { MenuComponent } from './menu/menu.component';
-import { HomeComponent } from './home/home.component';
-import { ProductpageComponent } from './productpage/productpage.component';
+import { ProductsComponent } from './components/products/products.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductpageComponent } from './components/productpage/productpage.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductpageComponent } from './productpage/productpage.component';
     ProductsComponent,
     MenuComponent,
     HomeComponent,
-    ProductpageComponent
+    ProductpageComponent,
+    ShoppingcartComponent
   ],
   imports: [
     BrowserModule,

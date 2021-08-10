@@ -1,6 +1,6 @@
 import { Component, Injectable } from '@angular/core';
-import { Account } from '../model/Account';
-import { HttpRequestsService } from '../httpservice/httpservice.service';
+import { Account } from '../../models/Account';
+import { HttpRequestsService } from '../../services/httpservice/httpservice.service';
 
 @Component({
   selector: 'app-authentication',

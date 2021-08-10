@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequestsService } from '../httpservice/httpservice.service';
+import { HttpRequestsService } from '../../services/httpservice/httpservice.service';
 import { Router } from '@angular/router';
-import { Product } from '../model/Product';
+import { Product } from '../../models/Product';
+import { CartService } from 'src/app/services/cartservice/cartservice.service';
 
 @Component({
   selector: 'app-productpage',
@@ -13,7 +14,8 @@ export class ProductpageComponent implements OnInit {
   product: Product = {};
 
   constructor(private http: HttpRequestsService, 
-    private router: Router) { }
+    private router: Router,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.findProductById(this.router.url);
@@ -22,10 +24,13 @@ export class ProductpageComponent implements OnInit {
   findProductById(id: string): void {     
     this.http.getProductById(id)
       .subscribe((resp: any) => this.product = resp);
-
-      setTimeout(() => {
-        console.log(this.product);
-      }, 100)
   }
 
+  addToCart(): void {
+    this.cartService.saveProduct(this.product);
+  }
+
+  test(): void {
+    console.log(this.cartService.getProduct(String(this.product.product_id)));
+  }
 }

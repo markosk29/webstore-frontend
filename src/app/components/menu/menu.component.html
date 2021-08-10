@@ -1,3 +1,5 @@
+<!-- TODO: Make component stick to the top of the page and be always visible -->
+
 <div class="menu" 
     (click)="switchMenuStatus()">{{arrows}}</div>
     
@@ -5,7 +7,7 @@
     *ngIf="isOpen" (click)="navigate('home')">HOME</div>
 
 <div class="products"
-    *ngIf="isOpen" (click)="navigate('products/all')">PRODUCTS</div>
+    *ngIf="isOpen" (click)="navigate('products')">PRODUCTS</div>
 
 <div class="categories"
     *ngIf="isOpen" (click)="navigate('categories')">CATEGORIES</div>
