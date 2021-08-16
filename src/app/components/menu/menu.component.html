@@ -1,22 +1,10 @@
-<!-- TODO: Make component stick to the top of the page and be always visible -->
+<div class="menu">
+    <img class="home" src="../../../assets/home.png"
+        (click)="navigate('home')"/>
 
-<div class="menu" 
-    (click)="switchMenuStatus()">{{arrows}}</div>
-    
-<div class="home" 
-    *ngIf="isOpen" (click)="navigate('home')">HOME</div>
+    <img class="cart" src="../../../assets/cart.png"
+        (click)="navigate('checkout')"/>
 
-<div class="products"
-    *ngIf="isOpen" (click)="navigate('products')">PRODUCTS</div>
-
-<div class="categories"
-    *ngIf="isOpen" (click)="navigate('categories')">CATEGORIES</div>
-
-<div class="wishlist" 
-    *ngIf="isOpen" (click)="navigate('wishlist')">WISHLIST</div>
-
-<div class="auth" 
-    *ngIf="isOpen" (click)="navigate('login')">LOGIN</div>
-
-<div class="profile" 
-    *ngIf="isOpen" (click)="navigate('profile')">PROFILE</div>
+    <img class="user" src="../../../assets/user.png"
+        (click)="navigate('auth')"/>
+</div>

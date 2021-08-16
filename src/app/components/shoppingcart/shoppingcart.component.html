@@ -1,1 +1,12 @@
-<p>shoppingcart works!</p>
+<div class="checkoutarea">
+    <div class="product" *ngFor="let product of productsArray">
+        <div class="productId">{{product.product_id}}</div>
+        <div class="productName">{{product.name}}</div>
+        <div class="productPrice">€{{product.price}}</div>
+        <img class="removeProduct" src="../../../assets/remove.png"
+            (click)="removeFromCart(product.product_id)">
+    </div>
+</div>
+
+<div class="priceTotal">Total: €{{priceTotal}}</div>
+<button class="confirmButton">CONFIRM</button>

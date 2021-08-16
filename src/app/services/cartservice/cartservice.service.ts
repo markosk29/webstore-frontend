@@ -31,6 +31,18 @@ export class CartService {
     return product;
   }
 
+  getAllProducts(): any {
+    let products: any = [];
+
+    for(var storedElement in localStorage) {
+      if(Number.parseInt(storedElement)) {
+        products.push(this.getProduct(storedElement));
+      }
+    }
+
+    return products;
+  }
+
   removeProduct(key: string): void {
     this._localStorage.removeItem(key);
   }
