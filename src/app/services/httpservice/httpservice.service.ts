@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 
 import { Account } from '../../models/Account';
 import { Product } from '../../models/Product';
+import { Order } from 'src/app/models/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class HttpRequestsService {
   }
 
   loginAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.url + "/auth/login" , account);
+    return this.http.post<Account>(this.url + "/auth/login", account);
   }
 
   getAllProducts(): Observable<Product> {
@@ -28,5 +29,9 @@ export class HttpRequestsService {
 
   getProductById(route: string): Observable<Product> {
     return this.http.get<Product>(this.url + route);
+  }
+
+  pushOrder(order: Order): Observable<Order> {
+    return this.http.post<Order>(this.url + "/order/push", order);
   }
 }

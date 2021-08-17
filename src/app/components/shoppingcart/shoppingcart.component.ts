@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cartservice/cartservice.service';
+import { Order } from 'src/app/models/Order';
+import { HttpRequestsService } from 'src/app/services/httpservice/httpservice.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -11,7 +13,21 @@ export class ShoppingcartComponent implements OnInit {
   productsArray: any = [];
   priceTotal: number = 0;
 
-  constructor(private cartService: CartService) { }
+  order: Order = {
+    firstname: '',
+    lastname: '',
+    contact1: '',
+    contact2: '',
+    address1: '',
+    address2: '',
+    paymentMethod: '',
+    orderStatus: 'CONFIRMED',
+    isPaid: false,
+    productsToOrder: []
+  }
+
+  constructor(private cartService: CartService,
+    private http: HttpRequestsService) { }
 
   ngOnInit(): void {
     this.productsArray = this.cartService.getAllProducts();
@@ -31,6 +47,34 @@ export class ShoppingcartComponent implements OnInit {
     });
 
     return this.priceTotal;
+  }
+
+  changeFocus(element: HTMLElement): void {
+    element.scrollIntoView();
+  }
+
+  //TO-DO
+  // CHECK IF THEY ARE NOT EMPTY AND IF THEY ARE VALID
+  //
+  confirmInvoice(): void {  
+    this.order.productsToOrder = this.productsArray;
+
+    this.http.pushOrder(this.order)
+    .subscribe(resp => console.log(resp));
+
+  
+    this.order = {
+      firstname: '',
+      lastname: '',
+      contact1: '',
+      contact2: '',
+      address1: '',
+      address2: '',
+      paymentMethod: '',
+      orderStatus: 'CONFIRMED',
+      isPaid: false,
+      productsToOrder: []
+    }
   }
 
 }

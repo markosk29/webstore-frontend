@@ -8,5 +8,34 @@
     </div>
 </div>
 
+<img class="movedown" src="../../../assets/focusupdown.png"
+    (click)="changeFocus(infoTarget)">
+
 <div class="priceTotal">Total: €{{priceTotal}}</div>
-<button class="confirmButton">CONFIRM</button>
+
+<div class="info" #infoTarget>
+    <p>First name:</p>
+    <input type="text" [(ngModel)]="order.firstname">
+
+    <p>Last name:</p>
+    <input type="text" [(ngModel)]="order.lastname">
+
+    <p>Phone:</p>
+    <input type="text" [(ngModel)]="order.contact1">
+
+    <p>E-mail:</p>
+    <input type="text" [(ngModel)]="order.contact2">
+
+    <p>Address 1:</p>
+    <input type="text" [(ngModel)]="order.address1">
+
+    <p>Address 2:</p>
+    <input type="text" [(ngModel)]="order.address2">
+
+    <p>Payment method:</p>
+
+    <input type="Radio" name="paymentMethod" value="CASH" [(ngModel)]="order.paymentMethod">Cash
+    <input type="Radio" name="paymentMethod" value="PAYPAL" [(ngModel)]="order.paymentMethod">Paypal
+</div>
+
+<button class="confirmButton" (click)="confirmInvoice()">CONFIRM</button>
