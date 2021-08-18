@@ -3,17 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './components/products/products.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductpageComponent } from './components/productpage/productpage.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
+import { PaypalpaymentComponent } from './paypalpayment/paypalpayment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    ProductsComponent
+    ProductsComponent,
+    MenuComponent,
+    HomeComponent,
+    ProductpageComponent,
+    ShoppingcartComponent,
+    PaypalpaymentComponent
   ],
   imports: [
     BrowserModule,

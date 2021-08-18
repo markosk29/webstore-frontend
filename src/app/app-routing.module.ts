@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { ProductsComponent } from './products/products.component';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { ProductsComponent } from './components/products/products.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProductpageComponent } from './components/productpage/productpage.component';
+import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 
 const routes: Routes = [
-  { path: 'login', component: AuthenticationComponent },
-  { path: 'products/all', component: ProductsComponent }
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'auth', component: AuthenticationComponent },
+  { path: 'products', component: ProductsComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'products/:id', component: ProductpageComponent},
+  { path: 'checkout', component: ShoppingcartComponent}
 ];
 
 @NgModule({

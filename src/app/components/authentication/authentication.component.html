@@ -1,0 +1,9 @@
+<div class="auth">
+    <input type="text" [(ngModel)]="account.username" />
+    <input type="password" [(ngModel)]="account.password" />
+    <button (click)="register()">register</button>
+    <button (click)="login()">login</button>
+    <button (click)="logout()">logout</button>
+
+    <h2 [(ngModel)]="response.message">{{response.message}}</h2>
+</div>
