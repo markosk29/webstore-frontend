@@ -34,8 +34,22 @@
 
     <p>Payment method:</p>
 
-    <input type="Radio" name="paymentMethod" value="CASH" [(ngModel)]="order.paymentMethod">Cash
-    <input type="Radio" name="paymentMethod" value="PAYPAL" [(ngModel)]="order.paymentMethod">Paypal
-</div>
+    <input type="Radio" name="paymentMethod" 
+    value="CASH" 
+    [(ngModel)]="order.paymentMethod"
+    (click)="hidePaypalShowButton()">Cash
 
-<button class="confirmButton" (click)="confirmInvoice()">CONFIRM</button>
+    <input type="Radio" name="paymentMethod"
+     value="PAYPAL" 
+     [(ngModel)]="order.paymentMethod"
+     (click)="showPaypalHideButton()">Paypal or Card
+
+     <app-paypalpayment *ngIf="isPaypal"
+      class="paypalButtons"
+       [paymentAmount]="paymentAmount"
+       (paymentConfirmation)="confirmInvoice($event)"></app-paypalpayment>
+
+     <button class="confirmButton" 
+     (click)="confirmInvoice(false)"
+      *ngIf="isCash">Confirm order</button>
+</div>

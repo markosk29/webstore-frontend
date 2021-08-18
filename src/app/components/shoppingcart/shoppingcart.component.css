@@ -91,6 +91,12 @@
     width: 105px;
 }
 
+.paypalButtons, .confirmButton {
+    position: absolute;
+    top: 5%;
+    left: 70%;
+}
+
 @keyframes MoveUpDown {
     0%, 100% {
       transform: translateY(0);

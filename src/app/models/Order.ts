@@ -9,7 +9,9 @@ export interface Order {
     address2: string,
     paymentMethod: string,
     orderStatus: string,
-    isPaid: boolean,
+    ispaid: boolean,
+    total: string,
+    dateandtime: string,
     user?: Account,
     productsToOrder: any
 }
