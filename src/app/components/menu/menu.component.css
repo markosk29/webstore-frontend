@@ -23,6 +23,14 @@
     left: 3%;
 }
 
+.products {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 10px;
+    left: 10%;
+}
+
 .cart {
     position: absolute;
     width: 75px;
@@ -39,7 +47,7 @@
     left: 87%;
 }
 
-.home:hover, .cart:hover, .user:hover {
+.home:hover, .cart:hover, .user:hover, .products:hover {
     width: 80px;
     height: 80px;
 }

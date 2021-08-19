@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cartservice/cartservice.service';
 import { Order } from 'src/app/models/Order';
 import { HttpRequestsService } from 'src/app/services/httpservice/httpservice.service';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -15,6 +16,8 @@ export class ShoppingcartComponent implements OnInit {
   priceTotal: number = 0;
   isPaypal: boolean = false;
   isCash: boolean = false;
+  isCartEmpty: boolean = true;
+  isPaymentSuccessful: boolean = false;
   paymentAmount = '';
 
   order: Order = {
@@ -33,16 +36,27 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   constructor(private cartService: CartService,
-    private http: HttpRequestsService) { }
+    private http: HttpRequestsService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.productsArray = this.cartService.getAllProducts();
     this.countTotalPrice();
+
+    if(this.productsArray.length > 0) {
+      this.isCartEmpty = false;
+    }
+
+    this.isPaymentSuccessful = false;
   }
 
   removeFromCart(id: string): void {
     this.productsArray.splice(this.productsArray.indexOf(id), 1);
     this.cartService.removeProduct(id);
+
+    if(this.productsArray.length == 0) {
+      this.isCartEmpty = true;
+    }
   }
 
   countTotalPrice(): number {
@@ -75,6 +89,8 @@ export class ShoppingcartComponent implements OnInit {
 
     this.http.pushOrder(this.order)
     .subscribe(resp => console.log(resp));
+
+    this.isPaymentSuccessful = true;
 
     this.priceTotal = 0;
     this.clearProducts();
@@ -112,5 +128,9 @@ export class ShoppingcartComponent implements OnInit {
     });
 
     this.productsArray = [];
+  }
+
+  navigateToProducts(): void {
+    this.router.navigateByUrl("/products");
   }
 }
