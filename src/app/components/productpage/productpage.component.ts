@@ -11,7 +11,13 @@ import { CartService } from 'src/app/services/cartservice/cartservice.service';
 })
 export class ProductpageComponent implements OnInit {
 
+  currentImg: any = '';
+
+  isProductAddedToCart: boolean = false;
+
   product: Product = {};
+
+  message: string = '';
 
   constructor(private http: HttpRequestsService, 
     private router: Router,
@@ -23,14 +29,47 @@ export class ProductpageComponent implements OnInit {
 
   findProductById(id: string): void {     
     this.http.getProductById(id)
-      .subscribe((resp: any) => this.product = resp);
+      .subscribe((resp: any) => {
+        this.product = resp
+        this.currentImg = resp.imagepath1;
+      });
   }
 
   addToCart(): void {
-    this.cartService.saveProduct(this.product);
+    let id = new Number(this.product.product_id);
+
+    if (!this.cartService.checkProduct(id.toString())) {
+      this.cartService.saveProduct(this.product);
+      this.isProductAddedToCart = true;
+
+      setTimeout(() =>{ 
+        this.isProductAddedToCart = false;
+      }, 480);
+
+      this.message = 'Product added to cart!';
+    } else {
+      this.message = 'Product already in cart!';
+    }
   }
 
-  test(): void {
-    console.log(this.cartService.getProduct(String(this.product.product_id)));
+  setMainImage(id: number) {
+    switch(id) {
+      case 1: {
+        this.currentImg = this.product.imagepath1;
+        break;
+      }
+      case 2: {
+        this.currentImg = this.product.imagepath2;
+        break;
+      }
+      case 3: {
+        this.currentImg = this.product.imagepath3;
+        break;
+      }
+    }
+  }
+
+  changeFocus(element: HTMLElement): void {
+    element.scrollIntoView();
   }
 }

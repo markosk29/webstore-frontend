@@ -1,9 +1,45 @@
-<div class="auth">
-    <input type="text" [(ngModel)]="account.username" />
-    <input type="password" [(ngModel)]="account.password" />
-    <button (click)="register()">register</button>
-    <button (click)="login()">login</button>
-    <button (click)="logout()">logout</button>
+<div class="auth" *ngIf="!isLoggedIn && !noAccountFlag">
+    <img src="../../../assets/welcome.png"
+        class="welcomeImg"/>
 
-    <h2 [(ngModel)]="response.message">{{response.message}}</h2>
+    <img src="../../../assets/username.png"
+        class="usernameImg"/>
+
+    <p class="usernameBar">|</p>
+
+    <input type="text" 
+        [(ngModel)]="account.username" 
+        class="usernameInput"
+        maxlength="50"/>
+
+    <img src="../../../assets/password.png"
+        class="passwordImg"/>
+
+    <p class="passwordBar">|</p>
+    
+    <input type="password" 
+        [(ngModel)]="account.password" 
+        class="passwordInput"
+        maxlength="200"/>
+
+    <a href="javascript:void(0);"
+    class="noAccountText" 
+    (click)="changeRegisterFlag()">Don't have an account?</a>
+
+    <a href="javascript:void(0);"
+    class="forgotPasswordText">Forgot password</a>
+
+    <button class="loginButton"
+         type="button" 
+         (click)="login()">Login</button>
+    <!--
+    <button (click)="register()">register</button>
+    <button (click)="login()">login</button>-->
+
 </div>
+
+<div class="auth" *ngIf="!isLoggedIn && noAccountFlag">
+    
+</div>
+
+<button type="button" (click)="logout()" class="logoutButton" *ngIf="isLoggedIn">logout</button>

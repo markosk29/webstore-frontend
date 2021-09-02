@@ -1,5 +1,122 @@
 .auth {
     position: absolute;
+    top: 15%;
+    left: 35%;
+    height: 600px;
+    width: 500px;
+    overflow: hidden;
+}
+
+.welcomeImg {
+    position: absolute;
+    top: 1%;
+    lefT: 31%;
+    height: 200px;
+    width: 200px;
+}
+
+.usernameImg {
+    z-index: 1;
+    position: absolute;
+    top: 41.2%;
+    left: 23%;
+    height: 30px;
+    width: 30px;
+}
+
+.usernameBar {
+    z-index: 1;
+    position: absolute;
+    top: 35.5%;
+    left: 31.5%;
+    font-size: 30px;
+}
+
+.usernameInput {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    height: 40px;
+    width: 225px;
+    border: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    outline-width: 0px;
+    padding-left: 75px;
+    font-size: 20px;
+}
+
+.passwordImg {
+    z-index: 1;
+    position: absolute;
+    top: 53.1%;
+    left: 23%;
+    height: 30px;
+    width: 30px;
+}
+
+.passwordBar {
+    z-index: 1;
+    position: absolute;
+    top: 47.5%;
+    left: 31.5%;
+    font-size: 30px;
+}
+
+.passwordInput {
+    position: absolute;
+    top: 52%;
+    left: 20%;
+    height: 40px;
+    width: 225px;
+    border: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    outline-width: 0px;
+    padding-left: 75px;
+    font-size: 20px;
+}
+
+.noAccountText {
+    position: absolute;
+    top: 62%;
+    left: 36%;
+}
+
+.forgotPasswordText {
+    position: absolute;
+    top: 68%;
+    left: 39%;
+}
+
+.loginButton {
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    height: 75px;
+    width: 300px;
+    background-color: RGB(0, 230, 0);
+    border-width: 1px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.loginButton:hover {
+    background-color: RGB(51, 255, 51);
+}
+
+.usernameInput:hover, .passwordInput:hover {
+    border-color: darkgrey;
+}
+
+.logoutButton {
+    position: absolute;
     top: 30%;
     left: 40%;
+    height: 50px;
+    width: 50px;
 }

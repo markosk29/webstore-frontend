@@ -48,6 +48,8 @@ export class ShoppingcartComponent implements OnInit {
     }
 
     this.isPaymentSuccessful = false;
+
+    window.scrollTo(0,0); 
   }
 
   removeFromCart(id: string): void {

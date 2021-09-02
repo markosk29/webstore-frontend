@@ -1,8 +1,214 @@
+.productMainImg {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  height: 512px;
+  width: 1024px;
+}
+
 .productImg1 {
-   margin-top: 150px;
-   margin-left: 150px;
-   width:512px;
-   height:512px;
+   position: absolute;
+   top: 68%;
+   left: 5%;
+   height: 256px;
+   width: 341.3px;
+}
+
+.productImg2 {
+   position: absolute;
+   top: 68%;
+   left: 22.7%;
+   height: 256px;
+   width: 341.3px;
+}
+
+.productImg3 {
+   position: absolute;
+   top: 68%;
+   left: 40.4%;
+   height: 256px;
+   width: 341.3px;
+}
+
+.productImg1:hover, .productImg2:hover, .productImg3:hover{
+   top: 64%;
+}
+
+.productNameBg {
+   position: absolute;
+   top: 20%;
+   left: 65%;
+   width: 600px;
+   height: 150px;
+   background-color: black;
+   opacity: 0.4;
+   overflow: hidden;
+}
+
+.productName {
+   position: absolute;
+   font-size: 35px;
+   font-weight: bold;
+   left: 5%;
+   width: 550px;
+   z-index: 1;
+   color: silver;
+   -webkit-text-stroke-width: 0.5;
+   -webkit-text-stroke-color: black;
+}
+
+.descWallBg {
+   position: absolute;
+   top: 36%;
+   left: 65%;
+   width: 600px;
+   height: 200px;
+}
+
+.descWall {
+   width: 2%;
+   height: 100%;
+   background-color: black;
+   opacity: 0.4;
+}
+
+.productManufacturer {
+   position: absolute;
+   top: 15%;
+   left: 6%;
+   font-size: 25px;
+   color: black;
+   z-index: 1;
+}
+
+.productStock {
+   position: absolute;
+   top: 55%;
+   left: 6%;
+   font-size: 25px;
+   color: black;
+   z-index: 1;
+}
+
+.productPrice {
+   position: absolute;
+   top: 30%;
+   left: 65%;
+   font-size: 40px;
+   color: black;
+   z-index: 1;
+}
+
+.addButton {
+   position: absolute;
+   top: 65%;
+   left: 74%;
+   height: 75px;
+   width: 300px;
+   background-color: RGB(0, 230, 0);
+   border-width: 1px;
+   border-radius: 10px;
+   font-size: 20px;
+   font-weight: bold;
+   color: white;
+}
+
+.descButton {
+   position: absolute;
+   top: 80%;
+   left: 74%;
+   height: 75px;
+   width: 300px;
+   background-color: silver;
+   border-width: 1px;
+   border-radius: 10px;
+   font-size: 20px;
+   font-weight: bold;
+   color: white;
+}
+
+.message {
+   position: absolute;
+   top: 57%;
+   left: 75%;
+   font-size: 30px;
+}
+
+.cartProduct {
+   position: absolute;
+   top: 52%;
+   left: 79%;
+   height: 128px;
+   width: 128px;
    object-fit:cover;
    object-position:50% 50%;
+   border-radius: 100px;
+   animation: MoveUp 0.5s linear infinite;
 }
+
+.description {
+   position: absolute;
+   top: calc(100% + 300px);
+   left: 10%;
+   height: 3000px;
+   width: 80%;
+   background-color: silver;
+}
+
+.descImg1 {
+   position: absolute;
+   top: 0%;
+   left: 0%;
+   width: 100%;
+   height: 30%;
+}
+
+.descText1 {
+   position: absolute;
+   top: 32%;
+   left: 10%;
+   width: 80%;
+   height: 15%;
+   font-size: 40px;
+   color: white;
+}
+
+.descImg2 {
+   position: absolute;
+   top: 46%;
+   left: 0%;
+   width: 100%;
+   height: 30%;
+}
+
+.descText2 {
+   position: absolute;
+   top: 80%;
+   left: 10%;
+   width: 80%;
+   height: 15%;
+   font-size: 40px;
+   color: white;
+}
+
+.descButton:hover {
+   background-color: RGB(160, 160, 160);
+}
+
+.addButton:hover {
+   background-color: RGB(51, 255, 51);
+}
+
+.productNameBg:hover {
+   opacity: 0.7;
+}
+
+.descWallBg:hover .descWall {
+   opacity: 0.7;
+}
+
+@keyframes MoveUp {
+   100% {
+     transform: translateY(-450px);
+   }
+ }
