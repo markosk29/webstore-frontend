@@ -4,6 +4,7 @@ import { Order } from 'src/app/models/Order';
 import { HttpRequestsService } from 'src/app/services/httpservice/httpservice.service';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authservice/authservice.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -21,6 +22,7 @@ export class ShoppingcartComponent implements OnInit {
   paymentAmount = '';
 
   order: Order = {
+    order_id: 0,
     firstname: '',
     lastname: '',
     contact1: '',
@@ -31,13 +33,15 @@ export class ShoppingcartComponent implements OnInit {
     dateandtime: '',
     paymentMethod: '',
     orderStatus: 'CONFIRMED',
+    userId: 0,
     ispaid: false,
     productsToOrder: []
   }
 
   constructor(private cartService: CartService,
     private http: HttpRequestsService,
-    private router: Router) { }
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit(): void {
     this.productsArray = this.cartService.getAllProducts();
@@ -89,7 +93,14 @@ export class ShoppingcartComponent implements OnInit {
       this.order.ispaid = true;
     }
 
-    this.http.pushOrder(this.order)
+    if (this.auth.getAuthStatus()) {
+      this.http.getUserByUsername(this.auth.getUser()).subscribe(resp => {
+        this.order.userId = resp.id;
+      })
+    }
+
+    setTimeout(() => {
+      this.http.pushOrder(this.order)
     .subscribe(resp => console.log(resp));
 
     this.isPaymentSuccessful = true;
@@ -98,6 +109,7 @@ export class ShoppingcartComponent implements OnInit {
     this.clearProducts();
   
     this.order = {
+      order_id: 0,
       firstname: '',
       lastname: '',
       contact1: '',
@@ -109,8 +121,10 @@ export class ShoppingcartComponent implements OnInit {
       paymentMethod: '',
       orderStatus: 'CONFIRMED',
       ispaid: false,
+      userId: 0,
       productsToOrder: []
     }
+    }, 100);
   }
 
   showPaypalHideButton(): void {

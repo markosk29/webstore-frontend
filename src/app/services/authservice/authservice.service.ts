@@ -66,13 +66,17 @@ export class AuthService implements OnInit {
 
   setUser(user: Account): void {
     this.user = user;
+
+    this._localStorage.setItem("user", user.username);
   }
 
-  getUser(): Account {
-    return this.user;
+  getUser(): string | null {
+    return this._localStorage.getItem("user");
   }
 
   removeUser(): void {
+    this._localStorage.removeItem("user");
+
     this.user = {
       token: "",
       id: 0,

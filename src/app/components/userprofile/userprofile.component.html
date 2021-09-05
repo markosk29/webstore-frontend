@@ -1,3 +1,16 @@
 <div class="welcomeMessage">
     <h1>Welcome {{ user.username }}!</h1>
+    <h1>Your orders:</h1>
+
 </div>>
+
+<div class="orders">
+    <div class="order" *ngFor="let order of orders">
+        <p class="id">{{order.order_id}}</p>
+        <p class="align">{{order.total}}</p>
+        <p class="align">{{order.orderStatus}}</p>
+        <p class="align" *ngIf="order.ispaid">PAID</p>
+        <p class="align" *ngIf="!order.ispaid">NOT PAID</p>
+        <p class="align">{{order.dateandtime}}</p>
+    </div>
+</div>

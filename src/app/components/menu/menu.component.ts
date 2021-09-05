@@ -25,4 +25,10 @@ export class MenuComponent implements OnInit {
     this.router.navigateByUrl('/' +route);
   }
 
+  logout(): void {
+    this.auth.removeToken();
+    this.auth.removeUser();
+    this.router.navigateByUrl("/home");
+  }
+
 }

@@ -81,14 +81,15 @@
 
 .noAccountText {
     position: absolute;
-    top: 62%;
+    top: 66%;
     left: 36%;
 }
 
-.forgotPasswordText {
+.response {
     position: absolute;
-    top: 68%;
-    left: 39%;
+    top: 90%;
+    left: 13%;
+    color: red;
 }
 
 .loginButton {
@@ -111,12 +112,4 @@
 
 .usernameInput:hover, .passwordInput:hover {
     border-color: darkgrey;
-}
-
-.logoutButton {
-    position: absolute;
-    top: 30%;
-    left: 40%;
-    height: 50px;
-    width: 50px;
 }

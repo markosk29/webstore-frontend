@@ -47,7 +47,15 @@
     left: 87%;
 }
 
-.home:hover, .cart:hover, .user:hover, .products:hover {
+.logout {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    top: 10px;
+    left: 93.5%;
+}
+
+.home:hover, .cart:hover, .user:hover, .products:hover, .logout:hover {
     width: 80px;
     height: 80px;
 }

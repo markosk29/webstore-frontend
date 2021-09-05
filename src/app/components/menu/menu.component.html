@@ -15,4 +15,8 @@
     <img class="user" src="../../../assets/login.png"
         (click)="navigate('auth')"
         *ngIf="!isLoggedIn"/>
+
+    <img class="logout" src="../../../assets/logout.png"
+        (click)="logout()"
+        *ngIf="isLoggedIn"/>
 </div>

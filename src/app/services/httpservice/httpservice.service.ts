@@ -34,4 +34,12 @@ export class HttpRequestsService {
   pushOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(this.url + "/order/push", order);
   }
+
+  getUserByUsername(username: string | null): Observable<Account> {
+    return this.http.get<Account>(this.url + "/auth/user/" + username);
+  }
+
+  getOrderByUserId(id: number): Observable<Order> {
+    return this.http.get<Order>(this.url + "/order/find/all/" +id);
+  }
 }

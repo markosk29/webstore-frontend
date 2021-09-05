@@ -14,10 +14,9 @@ export class AuthenticationComponent implements OnInit{
 
   isLoggedIn: boolean = false;
   noAccountFlag: boolean = false;
+  invalidAccount: boolean = false;
 
-  response: any = {
-    message: ''
-  };
+  message: String = "";
 
   account: Account = {
     token: "",
@@ -45,9 +44,16 @@ export class AuthenticationComponent implements OnInit{
               this.auth.storeToken(resp.token);
               this.auth.setUser(resp);
             });
-
-          this.router.navigateByUrl("/home");
       }
+
+      setTimeout(() => {
+        if (this.auth.getAuthStatus()) {
+          this.router.navigateByUrl("/home");
+          this.invalidAccount = false;
+        } else {
+          this.invalidAccount = true;
+        }
+       }, 200)
   }
   
   login(): void {
@@ -59,14 +65,16 @@ export class AuthenticationComponent implements OnInit{
               this.auth.storeToken(resp.token);
               this.auth.setUser(resp);
             });
-
-          this.router.navigateByUrl("/home");
        }
-  }
 
-  logout(): void {
-    this.auth.removeToken();
-    this.auth.removeUser();
+       setTimeout(() => {
+        if (this.auth.getAuthStatus()) {
+          this.router.navigateByUrl("/home");
+          this.invalidAccount = false;
+        } else {
+          this.invalidAccount = true;
+        }
+       }, 200)
   }
 
   changeRegisterFlag(): void {
