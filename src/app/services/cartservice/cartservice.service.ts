@@ -30,6 +30,14 @@ export class CartService {
 
     return product;
   }
+  
+  checkProduct(key: string): boolean {
+    if (this._localStorage.getItem(key) !== null) {
+      return true;
+    }
+
+    return false;
+  }
 
   getAllProducts(): any {
     let products: any = [];

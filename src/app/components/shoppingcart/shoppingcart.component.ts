@@ -3,6 +3,8 @@ import { CartService } from 'src/app/services/cartservice/cartservice.service';
 import { Order } from 'src/app/models/Order';
 import { HttpRequestsService } from 'src/app/services/httpservice/httpservice.service';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authservice/authservice.service';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -15,9 +17,12 @@ export class ShoppingcartComponent implements OnInit {
   priceTotal: number = 0;
   isPaypal: boolean = false;
   isCash: boolean = false;
+  isCartEmpty: boolean = true;
+  isPaymentSuccessful: boolean = false;
   paymentAmount = '';
 
   order: Order = {
+    order_id: 0,
     firstname: '',
     lastname: '',
     contact1: '',
@@ -28,21 +33,36 @@ export class ShoppingcartComponent implements OnInit {
     dateandtime: '',
     paymentMethod: '',
     orderStatus: 'CONFIRMED',
+    userId: 0,
     ispaid: false,
     productsToOrder: []
   }
 
   constructor(private cartService: CartService,
-    private http: HttpRequestsService) { }
+    private http: HttpRequestsService,
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit(): void {
     this.productsArray = this.cartService.getAllProducts();
     this.countTotalPrice();
+
+    if(this.productsArray.length > 0) {
+      this.isCartEmpty = false;
+    }
+
+    this.isPaymentSuccessful = false;
+
+    window.scrollTo(0,0); 
   }
 
   removeFromCart(id: string): void {
     this.productsArray.splice(this.productsArray.indexOf(id), 1);
     this.cartService.removeProduct(id);
+
+    if(this.productsArray.length == 0) {
+      this.isCartEmpty = true;
+    }
   }
 
   countTotalPrice(): number {
@@ -73,13 +93,23 @@ export class ShoppingcartComponent implements OnInit {
       this.order.ispaid = true;
     }
 
-    this.http.pushOrder(this.order)
+    if (this.auth.getAuthStatus()) {
+      this.http.getUserByUsername(this.auth.getUser()).subscribe(resp => {
+        this.order.userId = resp.id;
+      })
+    }
+
+    setTimeout(() => {
+      this.http.pushOrder(this.order)
     .subscribe(resp => console.log(resp));
+
+    this.isPaymentSuccessful = true;
 
     this.priceTotal = 0;
     this.clearProducts();
   
     this.order = {
+      order_id: 0,
       firstname: '',
       lastname: '',
       contact1: '',
@@ -91,8 +121,10 @@ export class ShoppingcartComponent implements OnInit {
       paymentMethod: '',
       orderStatus: 'CONFIRMED',
       ispaid: false,
+      userId: 0,
       productsToOrder: []
     }
+    }, 100);
   }
 
   showPaypalHideButton(): void {
@@ -112,5 +144,9 @@ export class ShoppingcartComponent implements OnInit {
     });
 
     this.productsArray = [];
+  }
+
+  navigateToProducts(): void {
+    this.router.navigateByUrl("/products");
   }
 }

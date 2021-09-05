@@ -21,6 +21,7 @@ export class PaypalpaymentComponent implements OnInit {
         id: "#paypalButtons",
         currency: "EUR",
         value: this.paymentAmount,
+
         onApprove: (details) => {
             this.paymentConfirmation.emit(true);
         }

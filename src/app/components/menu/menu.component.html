@@ -2,9 +2,21 @@
     <img class="home" src="../../../assets/home.png"
         (click)="navigate('home')"/>
 
+    <img class="products" src="../../../assets/products.png"
+        (click)="navigate('products')">
+
     <img class="cart" src="../../../assets/cart.png"
         (click)="navigate('checkout')"/>
 
     <img class="user" src="../../../assets/user.png"
-        (click)="navigate('auth')"/>
+        (click)="navigate('profile')"
+        *ngIf="isLoggedIn"/>
+
+    <img class="user" src="../../../assets/login.png"
+        (click)="navigate('auth')"
+        *ngIf="!isLoggedIn"/>
+
+    <img class="logout" src="../../../assets/logout.png"
+        (click)="logout()"
+        *ngIf="isLoggedIn"/>
 </div>

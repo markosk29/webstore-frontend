@@ -1,6 +1,7 @@
 import { Account } from "./Account";
 
 export interface Order {
+    order_id: number,
     firstname: string,
     lastname: string,
     contact1: string,
@@ -12,6 +13,6 @@ export interface Order {
     ispaid: boolean,
     total: string,
     dateandtime: string,
-    user?: Account,
+    userId: number,
     productsToOrder: any
 }

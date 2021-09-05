@@ -1,0 +1,41 @@
+.welcomeMessage {
+    position: absolute;
+    top: 15%;
+    left: 40%;
+}
+
+.orders {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    border: black;
+    border-style: solid;
+    width: 80%;
+    height: 400px;
+    overflow-y: auto;
+}
+
+.order {
+    height: 50px;
+    width: 100%;
+    font-size: 25px;
+}
+
+.id {
+    position: relative;
+    top: -15px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-right: 8%;
+}
+
+.align {
+    position: relative;
+    top: -15px;
+    display: inline-block;
+    margin-right: 8%;
+}
+
+.order:hover {
+    background-color: silver;
+}

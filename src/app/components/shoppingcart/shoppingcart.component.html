@@ -1,55 +1,70 @@
-<div class="checkoutarea">
-    <div class="product" *ngFor="let product of productsArray">
-        <div class="productId">{{product.product_id}}</div>
-        <div class="productName">{{product.name}}</div>
-        <div class="productPrice">€{{product.price}}</div>
-        <img class="removeProduct" src="../../../assets/remove.png"
-            (click)="removeFromCart(product.product_id)">
+<div *ngIf="!isCartEmpty && !isPaymentSuccessful">
+    <div class="checkoutarea">
+        <div class="product" *ngFor="let product of productsArray">
+            <div class="productId">{{product.product_id}}</div>
+            <div class="productName">{{product.name}}</div>
+            <div class="productPrice">€{{product.price}}</div>
+            <img class="removeProduct" src="../../../assets/remove.png"
+                (click)="removeFromCart(product.product_id)">
+        </div>
+    </div>
+    
+    <img class="movedown" src="../../../assets/focusupdown.png"
+        (click)="changeFocus(infoTarget)">
+    
+    <div class="priceTotal">Total: €{{priceTotal}}</div>
+    
+    <div class="info" #infoTarget>
+        <p>First name:</p>
+        <input type="text" [(ngModel)]="order.firstname">
+    
+        <p>Last name:</p>
+        <input type="text" [(ngModel)]="order.lastname">
+    
+        <p>Phone:</p>
+        <input type="text" [(ngModel)]="order.contact1">
+    
+        <p>E-mail:</p>
+        <input type="text" [(ngModel)]="order.contact2">
+    
+        <p>Address 1:</p>
+        <input type="text" [(ngModel)]="order.address1">
+    
+        <p>Address 2:</p>
+        <input type="text" [(ngModel)]="order.address2">
+    
+        <p>Payment method:</p>
+    
+        <input type="Radio" name="paymentMethod" 
+        value="CASH" 
+        [(ngModel)]="order.paymentMethod"
+        (click)="hidePaypalShowButton()">Cash
+    
+        <input type="Radio" name="paymentMethod"
+         value="PAYPAL" 
+         [(ngModel)]="order.paymentMethod"
+         (click)="showPaypalHideButton()">Paypal or Card
+    
+         <app-paypalpayment *ngIf="isPaypal"
+          class="paypalButtons"
+           [paymentAmount]="paymentAmount"
+           (paymentConfirmation)="confirmInvoice($event)"></app-paypalpayment>
+    
+         <button class="confirmButton" 
+         (click)="confirmInvoice(false)"
+          *ngIf="isCash">Confirm order</button>
     </div>
 </div>
 
-<img class="movedown" src="../../../assets/focusupdown.png"
-    (click)="changeFocus(infoTarget)">
+<div *ngIf="isCartEmpty">
+    <img class="emptyBox" src="../../../assets/empty.png">
+    <p class="emptyText">Your shopping cart is empty, would you like to browse our products?</p>
+    <button class="emptyButton" type="button" (click)="navigateToProducts()">Go to products</button>
+</div>
 
-<div class="priceTotal">Total: €{{priceTotal}}</div>
-
-<div class="info" #infoTarget>
-    <p>First name:</p>
-    <input type="text" [(ngModel)]="order.firstname">
-
-    <p>Last name:</p>
-    <input type="text" [(ngModel)]="order.lastname">
-
-    <p>Phone:</p>
-    <input type="text" [(ngModel)]="order.contact1">
-
-    <p>E-mail:</p>
-    <input type="text" [(ngModel)]="order.contact2">
-
-    <p>Address 1:</p>
-    <input type="text" [(ngModel)]="order.address1">
-
-    <p>Address 2:</p>
-    <input type="text" [(ngModel)]="order.address2">
-
-    <p>Payment method:</p>
-
-    <input type="Radio" name="paymentMethod" 
-    value="CASH" 
-    [(ngModel)]="order.paymentMethod"
-    (click)="hidePaypalShowButton()">Cash
-
-    <input type="Radio" name="paymentMethod"
-     value="PAYPAL" 
-     [(ngModel)]="order.paymentMethod"
-     (click)="showPaypalHideButton()">Paypal or Card
-
-     <app-paypalpayment *ngIf="isPaypal"
-      class="paypalButtons"
-       [paymentAmount]="paymentAmount"
-       (paymentConfirmation)="confirmInvoice($event)"></app-paypalpayment>
-
-     <button class="confirmButton" 
-     (click)="confirmInvoice(false)"
-      *ngIf="isCash">Confirm order</button>
+<div *ngIf="isPaymentSuccessful && !isCartEmpty">
+    <img class="emptyBox" src="../../../assets/success.png">
+    <p class="emptyText">Thank you for your purchase! A receipt has been sent to your e-mail address.</p>
+    <!-- only if user is logged in
+    <button class="emptyButton" type="button" (click)="navigateToProfile()">Go to commands</button> -->
 </div>

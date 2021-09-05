@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductpageComponent } from './components/productpage/productpage.component';
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
 import { PaypalpaymentComponent } from './paypalpayment/paypalpayment.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PaypalpaymentComponent } from './paypalpayment/paypalpayment.component'
     HomeComponent,
     ProductpageComponent,
     ShoppingcartComponent,
-    PaypalpaymentComponent
+    PaypalpaymentComponent,
+    UserprofileComponent
   ],
   imports: [
     BrowserModule,
